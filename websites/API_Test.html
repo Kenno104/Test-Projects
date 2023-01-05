@@ -5,9 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>API Test</title>
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="style.css">-->
   </head>
   <body>
-	<script src="index.js"></script>
+
+    <input id = "name" type = "text"> <!--Put name in textbox-->
+
+    <div id = "Results"></div> <!--Show result saying "Hello 'Name'!!"-->
+
+    <!-- YT Tutorial - Doesn't work... -->
+  <script>
+    const url = "http://api.weatherapi.com/v1/current.json?key=&q=London&aqi=yes"
+    async function getTemperature()
+    {
+      const result = await fetch(url);
+      result.json().then(json => {
+        console.log(json);
+      }) 
+    }
+    
+    </script>
+
+    <!-- Final Goal
+    
+	<script>
+    async function loaded(reader)
+    {
+      const response = await fetch("https://kenno104-test.hf.space/run/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            data: [
+              "",
+          ]
+          })})
+        .then(r => r.json())
+        .then(
+          r => {
+            let data = r.data;
+          }
+        )
+    }
+
+    function read() 
+    {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => loaded(reader))
+      reader.readAsText(file);
+    }
+
+
+  </script>
+    -->
+
   </body>
 </html>
