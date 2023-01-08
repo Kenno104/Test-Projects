@@ -38,7 +38,7 @@
       
       //Second Function: Reads inputted image file (distinguishes that the image is the first part of the file)
       function read() {
-        console.log('hi');
+        console.log('hi2');
         const reader = new FileReader(); 
         reader.addEventListener('load', () => getResult(reader)) //When image submitted, it's sent to the 'getResult' function (above)
         reader.readAsDataURL(image.files[0]); //submitted image is the first file of the image array
