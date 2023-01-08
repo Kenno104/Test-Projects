@@ -1,0 +1,46 @@
+
+
+<!--HELLO WORLD EXAMPLE-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API Hello World Example</title>
+  </head>
+  <body>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+    
+    
+    <script>
+      //Declaring Get Result Function
+
+      async function getResult(name) {
+        const response = await fetch("https://kenno104-test.hf.space/run/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            data: [
+              name,
+            ]
+          })
+        });
+
+        //This part takes the json response object and specifically returns the inputted name (data[0])
+        const data = await response.json();
+        document.getElementById("result").innerHTML = data.data[0];
+      }
+      
+      //This script listens for the submission of a name and triggers the above function
+      const form = document.querySelector("form");
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        getResult(name);
+      });
+    </script>
+  </body>
+</html>
